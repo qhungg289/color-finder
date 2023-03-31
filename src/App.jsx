@@ -11,7 +11,10 @@ function App() {
 	function requestCameraAccess() {
 		navigator.mediaDevices
 			.getUserMedia({ video: true })
-			.then((stream) => (videoRef.current.srcObject = stream))
+			.then((stream) => {
+				videoRef.current.srcObject = stream;
+				videoRef.current.play();
+			})
 			.catch((e) => setIsAllowed(false));
 	}
 
@@ -42,11 +45,7 @@ function App() {
 				style={{ backgroundColor: avgColor }}
 			></div>
 
-			<video
-				ref={videoRef}
-				className="absolute left-0 top-0 aspect-square h-32"
-				autoPlay
-			></video>
+			<video ref={videoRef} className="hidden"></video>
 
 			<h1 className={`${isDark ? "text-gray-100" : "text-gray-900"} text-4xl`}>
 				Color Finder
