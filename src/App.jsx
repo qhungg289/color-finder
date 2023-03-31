@@ -42,7 +42,11 @@ function App() {
 				style={{ backgroundColor: avgColor }}
 			></div>
 
-			<video ref={videoRef} className="hidden" autoPlay></video>
+			<video
+				ref={videoRef}
+				className="absolute left-0 top-0 aspect-square h-32"
+				autoPlay
+			></video>
 
 			<h1 className={`${isDark ? "text-gray-100" : "text-gray-900"} text-4xl`}>
 				Color Finder
@@ -58,8 +62,9 @@ function App() {
 
 			<button
 				onClick={copyToClipboard}
+				style={{ color: avgColor }}
 				className={`${
-					isDark ? "bg-gray-100 text-gray-900" : "bg-gray-900 text-gray-100"
+					isDark ? "bg-gray-100" : "bg-gray-900"
 				} rounded-full  p-4`}
 			>
 				<svg
